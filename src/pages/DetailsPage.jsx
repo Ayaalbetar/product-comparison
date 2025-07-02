@@ -31,6 +31,8 @@ function DetailsPage() {
     setSelectedProducts([...selectedProducts, product.id]);
   };
 
+  if (!product) return <div className="container">Loading...</div>;
+
   return (
     <div className="container">
       <button className="compare-button" onClick={() => navigate(-1)}> Back</button>
