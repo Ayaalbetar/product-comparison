@@ -6,18 +6,14 @@ import DetailsPage from './pages/DetailsPage';
 import { ComparisonContext } from './context/ComparisonContext';
 
 function App() {
-  const [selectedProducts, setSelectedProducts] = useState([]);
-
-  useEffect(() => {
-    const stored = localStorage.getItem('comparison');
-    if (stored) {
-      try {
-        setSelectedProducts(JSON.parse(stored));
-      } catch (e) {
-        console.error('Failed to parse comparison data:', e);
-      }
+  const [selectedProducts, setSelectedProducts] = useState(() => {
+    try {
+      const stored = localStorage.getItem('comparison');
+      return stored ? JSON.parse(stored) : [];
+    } catch (e) {
+      return [];
     }
-  }, []);
+  });
 
   useEffect(() => {
     localStorage.setItem('comparison', JSON.stringify(selectedProducts));
