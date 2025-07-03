@@ -11,7 +11,8 @@ function HomePage() {
     fetch('https://fakestoreapi.com/products')
       .then(res => res.json())
       .then(data => {
-        const dataFormatted = data.map(product => ({
+        const electronics = data.filter(item => item.category === 'electronics');
+        const dataFormatted = electronics.map(product => ({
           id: product.id,
           name: product.title,
           brand: product.category,
