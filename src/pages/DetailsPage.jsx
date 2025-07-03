@@ -1,4 +1,4 @@
-import  { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ComparisonContext } from '../context/ComparisonContext';
 import { useContext } from 'react';
@@ -36,6 +36,8 @@ function DetailsPage() {
   return (
     <div className="container">
       <button className="compare-button" onClick={() => navigate(-1)}> Back</button>
+      <button onClick={() => navigator.clipboard.writeText(window.location.href)}> Share</button>
+
       <div className="details">
         <img src={product.image} alt={product.name} style={{ maxWidth: '200px' }} />
         <div>
